@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require 'fileutils'
+require_relative 'lib/create_xml/price_list'
+require_relative 'lib/create_xml/xml_builder'
+
+if __FILE__ == $0
+
+  print "Name of price list: "
+  price_list_name = gets.chomp
+
+  print "Path to price list: "
+  price_list = gets.chomp
+
+  begin
+    price_list_file = File.new(price_list, "r")
+  rescue
+    puts "Could not open the price list file located at #{price_list} -- Exiting Script!!"
+    exit
+  end
+
+  price_list = CreateXml::PriceList.new(price_list_file)
+  xml_builder = CreateXml::XmlBuilder.new(price_list_name)
+  xml_builder.build(price_list)
+
+  puts ("Price list xml has been created and placed in ./price_lists/#{price_list_name}")
+
+end
+
