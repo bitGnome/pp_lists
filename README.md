@@ -2,7 +2,7 @@
 
 ## Description
 
-** pp_list ** Generate an xml file from a csv file to importing into InDesign.
+**pp_list** Generate an xml file from a csv file to importing into InDesign.
 
 Run the script by typing the following at a command prompt.
 
